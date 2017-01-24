@@ -16,7 +16,8 @@ var (
 func forward(conn net.Conn) {
 	client, err := net.Dial("tcp", *remoteAddr)
 	if err != nil {
-		log.Fatalf("Dial failed: %v", err)
+		log.Printf("Dial failed: %v", err)
+		return
 	}
 	log.Printf("Forwarding from %v to %v\n", conn.LocalAddr(), client.RemoteAddr())
 	go func() {
